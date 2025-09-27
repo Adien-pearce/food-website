@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rucha and Sam's Idea — Leftover Recipe AI</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <div class="brand">
+        <span class="logo-emoji">🍲</span>
+        <span class="brand-text">Rucha and Sam's Idea</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#menu" class="nav-link">Menu</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-outline" href="#contact">Have a recipe suggestion</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-left fade-up">
+        <h1>Best food for your taste</h1>
+        <p class="lead">Discover delectable cuisine and unforgettable moments in our welcoming culinary haven.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Have a recipe suggestion</a>
+          <a class="btn btn-ghost" href="#menu">Explore Menu</a>
+        </div>
+      </div>
+      <div class="hero-right fade-up delay-1">
+        <div class="hero-images">
+          <img src="/assets/hero-1.jpg" alt="food" class="hero-img hero-img-1">
+          <img src="/assets/hero-2.jpg" alt="food" class="hero-img hero-img-2">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <p class="section-desc">At Rucha and Sam's Idea we combine traditional recipes with modern, AI-powered ideas to help you create delicious meals from leftovers. Our mission is to inspire creativity in the kitchen and reduce food waste.</p>
+    </div>
+  </section>
+
+  <!-- MENU / AI RECIPE GENERATOR -->
+  <section id="menu" class="section menu-section">
+    <div class="container">
+      <h2 class="section-title">AI Recipe Generator</h2>
+      <p class="section-desc">Upload a photo of your leftovers or use the camera — the app will detect items and fetch real recipes from Spoonacular. You can also request a ChatGPT-style recipe summary.</p>
+
+      <div class="card grid-two fade-up">
+        <div class="left-col">
+          <div class="camera-box">
+            <video id="video" autoplay muted playsinline></video>
+            <canvas id="canvas"></canvas>
+          </div>
+          <div class="controls">
+            <button id="startCamera" class="btn">Start Camera</button>
+            <button id="detectFoods" class="btn disabled" disabled>Detect Foods</button>
+            <label class="upload-btn btn">
+              Upload Image
+              <input id="imageUpload" type="file" accept="image/*" hidden>
+            </label>
+          </div>
+          <div id="detectedInfo" class="muted small">Detected: <span id="detectedList">—</span></div>
+        </div>
+
+        <div class="right-col">
+          <textarea id="ingredients" placeholder="Edit ingredients (comma separated) — e.g., chicken, rice, carrots"></textarea>
+          <div class="inline-row">
+            <button id="getRecipes" class="btn btn-primary">Get Recipes (Spoonacular)</button>
+            <button id="getChatGPT" class="btn btn-ghost">Get ChatGPT Tips</button>
+            <button id="copyRecipe" class="btn btn-outline" style="display:none;">Copy Recipe</button>
+          </div>
+
+          <div id="loading" class="loading" aria-hidden="true">Loading…</div>
+          <div id="error" class="error"></div>
+
+          <div id="recipes" class="recipes"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-desc">Questions, bookings, or feedback — drop us a message.</p>
+      <form id="contactForm" class="contact-form">
+        <input name="name" placeholder="Your name" required />
+        <input name="email" type="email" placeholder="Email address" required />
+        <textarea name="message" placeholder="Message..." required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+      <div id="contactResult" class="muted small"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2025 Rucha and Sam's Idea</div>
+      <div class="muted">Built with ❤️ · AI-assisted recipes</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/ml5@0.12.2/dist/ml5.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
